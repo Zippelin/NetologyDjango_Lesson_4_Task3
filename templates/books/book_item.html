@@ -1,0 +1,5 @@
+<div class="book col-md-4">
+    <h2>{{ book.name }}</h2>
+    <p>Автор: {{ book.author }}</p>
+    <p>Дата публикации: <a href="{% url 'books_date_list' book.pub_date %}">{{ book.pub_date }}</a></p>
+</div>

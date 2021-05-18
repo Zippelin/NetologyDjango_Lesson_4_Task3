@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Книги за период {{ p_date }}{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1>Книги за период {{ p_date|date:"d N Y" }}</h1>
+    </div>
+    <div class="row">
+        {% for book in books %}
+            {% include 'books/book_item.html' %}
+        {% endfor %}
+    </div>
+</div>
+<table style="width:100%">
+    <tr>
+        <td width="33%">{% if prev_url is not None %}
+            <a href="{% url 'books_date_list' prev_url %}">{{ prev_url }}</a>
+            {% endif %}
+        </td>
+        <td width="33%">
+            {{ p_date|date:"d N Y" }}
+        </td>
+        <td>{% if next_url is not None %}
+            <a href="{% url 'books_date_list' next_url %}">{{ next_url }}</a>
+            {% endif %}
+        </td>
+    </tr>
+</table>
+{% endblock %}
